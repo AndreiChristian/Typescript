@@ -73,3 +73,98 @@ let peanut: DOG = {
 };
 
 // functions
+
+function add(a: number, b: number): number {
+  return a + b;
+}
+
+function print(value: any) {
+  console.log(value);
+}
+
+// Generics
+
+function insertAtBeginning<T>(array: T[], value: T) {
+  const newArray = [value, ...array];
+  return newArray;
+}
+
+const updatedArray = insertAtBeginning([1, 2, 3], 4);
+const stringArray = insertAtBeginning(["1", "2", "3"], "4");
+
+// updatedArray[0].split("")
+stringArray[0].split("");
+
+// classes
+
+class Student {
+  //   firstName: string;
+  //   lastName: string;
+  //   age: number;
+  //   private courses: string[];
+
+  //   constructor(firstName: string, lastName: string, age: number, courses: string[]) {
+  //     this.firstName = firstName;
+  //     this.lastName = lastName;
+  //     this.age = age;
+  //     this.courses = courses;
+  //   }
+
+  constructor(
+    public firstName: string,
+    public lastName: string,
+    public age: number,
+    private courses: string[]
+  ) {}
+
+  enroll(courseName: string) {
+    this.courses.push(courseName);
+  }
+
+  listCourses() {
+    return this.courses.slice();
+  }
+}
+
+const john = new Student("John", "Doe", 24, ["javascript", "typescript"]);
+
+john.listCourses();
+
+// interfaces
+// only available in Typescript, will not be transpiled to JS
+
+interface Human {
+  firstName: string;
+  age: number;
+  hasMagicPowers: false;
+  greet: () => void;
+}
+
+const jack: Human = {
+  firstName: "Jack",
+  age: 20,
+  hasMagicPowers: false,
+  greet: () => {
+    console.log("Hello");
+  },
+};
+
+const gandalf: Human = {
+  firstName: "Gandalf",
+  age: 100,
+  //   hasMagicPowers: true,
+  hasMagicPowers: false,
+  greet: () => {
+    console.log("Hello");
+  },
+};
+
+const batman: Human = {
+  firstName: "Bruce",
+  age: 35,
+  hasMagicPowers: false,
+  greet: () => {
+    console.log("I am batman!");
+  },
+  // vehicle:"batmobile"
+};
